@@ -1,0 +1,17 @@
+
+.disable{
+    opacity: 0;
+  }
+.able{
+opacity: 1;
+color: darkred;
+background-color: white;
+height: 30px;
+width: auto;
+border-radius: 100px;
+border: 0px;    
+}
+.able:hover
+{
+       background-color: red; 
+}

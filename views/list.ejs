@@ -1,0 +1,62 @@
+<%- include("header") -%>
+ <!-- You never comment EJS <%%> stuff -> CHECK.bruh()-->
+  <div class="box-heading" id="heading">
+    <h1> <%= listTitle %> </h1>
+  </div>
+
+  <div class="box-item">
+    <% newListItems.forEach((item,index)=>{ %>
+    <div class="item">
+ 
+      <input index = "<%= index%>" type="checkbox" name="checkbox"
+        onclick="
+        if(!this.checked)
+        {
+          document.getElementById('delete<%=  index %>'). disabled = true
+          document.getElementById('delete<%=  index %>').setAttribute('class','disable')
+        }
+        else
+        {
+          document.getElementById('delete<%=  index %>'). disabled = false
+          document.getElementById('delete<%=  index %>').setAttribute('class','able')
+        }
+        "
+      > 
+      <div class = item-box ><%=  item.name  %></div> 
+
+      
+
+      <form action="/delete" method="post">
+          <button type = "submit"value = "<%= item._id%>" id = "delete<%=  index %>"
+             class = "disable" index = "<%=  index %>" name = "delBtn">
+            Delete
+          </button>
+          <script> document.getElementById('delete<%=  index %>'). disabled = true</script>
+    </form>
+    </div>
+
+    <%})  %>
+  
+    <!-- <% for (let i=0; i<newListItems.length; i++) { %>
+      <div class="item">
+        <input type="checkbox">
+
+        <div class = item-box><%=  newListItems[i].name  %></div> 
+
+      </div>
+      <% } %> -->
+      <!-- //  newListItems[i]  %>-->
+<div style="text-align: center;"> 
+  <form class="item" action="/" method="post">
+    <div style="margin-left: -18px">
+    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+    </div>
+    <div style="margin-left: 112px">
+      <button class = "add-button"type="submit" name="list">+</button>
+    </div>
+  </form>
+</div>
+      
+  </div>
+
+<%- include("footer") -%>
